@@ -1,0 +1,22 @@
+diff --git a/node_modules/@tanstack/router-plugin/dist/esm/core/code-splitter/compilers.js b/node_modules/@tanstack/router-plugin/dist/esm/core/code-splitter/compilers.js
+index 8b4d86e..bcaae36 100644
+--- a/node_modules/@tanstack/router-plugin/dist/esm/core/code-splitter/compilers.js
++++ b/node_modules/@tanstack/router-plugin/dist/esm/core/code-splitter/compilers.js
+@@ -457,7 +457,7 @@ function compileCodeSplitReferenceRoute(opts) {
+ 									if (!shouldSplit) return;
+ 									modified = true;
+ 									if (!hasImportedOrDefinedIdentifier(LAZY_ROUTE_COMPONENT_IDENT)) programPath.unshiftContainer("body", [template.statement(`import { ${LAZY_ROUTE_COMPONENT_IDENT} } from '${PACKAGE}'`)()]);
+-									if (!hasImportedOrDefinedIdentifier(splitNodeMeta.localImporterIdent)) programPath.unshiftContainer("body", [template.statement(`const ${splitNodeMeta.localImporterIdent} = () => import('${splitUrl}')`)()]);
++									if (!hasImportedOrDefinedIdentifier(splitNodeMeta.localImporterIdent)) programPath.unshiftContainer("body", [template.statement(`const ${splitNodeMeta.localImporterIdent} = () => import("${splitUrl}")`)()]);
+ 									const insertionPath = path.getStatementParent() ?? path;
+ 									let splitPropValue;
+ 									for (const plugin of opts.compilerPlugins ?? []) {
+@@ -493,7 +493,7 @@ function compileCodeSplitReferenceRoute(opts) {
+ 									if (!shouldSplit) return;
+ 									modified = true;
+ 									if (!hasImportedOrDefinedIdentifier(LAZY_FN_IDENT)) programPath.unshiftContainer("body", template.smart(`import { ${LAZY_FN_IDENT} } from '${PACKAGE}'`)());
+-									if (!hasImportedOrDefinedIdentifier(splitNodeMeta.localImporterIdent)) programPath.unshiftContainer("body", [template.statement(`const ${splitNodeMeta.localImporterIdent} = () => import('${splitUrl}')`)()]);
++									if (!hasImportedOrDefinedIdentifier(splitNodeMeta.localImporterIdent)) programPath.unshiftContainer("body", [template.statement(`const ${splitNodeMeta.localImporterIdent} = () => import("${splitUrl}")`)()]);
+ 									prop.value = template.expression(`${LAZY_FN_IDENT}(${splitNodeMeta.localImporterIdent}, '${splitNodeMeta.exporterIdent}')`)();
+ 								}
+ 							}
