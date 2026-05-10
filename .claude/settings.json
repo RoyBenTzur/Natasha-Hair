@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-Command node, bun, npx 2>$null | Select-Object Name, Source; $env:PATH -split ';' | Where-Object { $_ -match 'node|bun' })"
+    ]
+  }
+}
